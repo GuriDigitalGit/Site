@@ -597,6 +597,10 @@ h1 {
 
 .deliverables-section {
   margin-top: clamp(100px, 12vw, 170px);
+  width: 1234px;
+  max-width: none;
+  margin-left: calc(50% - 720px + 343px);
+  margin-right: 0;
 }
 
 .deliverables-section h2 {
@@ -606,8 +610,8 @@ h1 {
 
 .deliverable-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(2, 606px);
+  gap: 22px;
 }
 
 .deliverable-card {
@@ -619,8 +623,11 @@ h1 {
 
 .card-visual {
   position: relative;
-  height: 290px;
+  height: 376px;
   background: #fff;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
 }
 
 .card-visual::before,
@@ -717,6 +724,10 @@ h1 {
   box-shadow: -90px -36px 0 8px #0a0a0a, 90px 36px 0 8px #0a0a0a;
 }
 
+.visual-film {
+  background-image: url("./assets/card-05.jpg");
+}
+
 .visual-audio::before {
   width: 80px;
   height: 130px;
@@ -734,6 +745,10 @@ h1 {
   background:
     linear-gradient(#111, #111) 0 36px / 100% 4px no-repeat,
     repeating-linear-gradient(90deg, #111 0 9px, transparent 9px 22px);
+}
+
+.visual-audio {
+  background-image: url("./assets/card-06.jpg");
 }
 
 .visual-format::before {
@@ -804,6 +819,61 @@ h1 {
   color: #111;
   font-size: 72px;
   font-weight: 800;
+}
+
+.visual-script {
+  background-image: url("./assets/card-01.jpg");
+}
+
+.visual-camera {
+  background-image: url("./assets/card-02.jpg");
+}
+
+.visual-map {
+  background-image: url("./assets/card-03.jpg");
+}
+
+.visual-people {
+  background-image: url("./assets/card-04.jpg");
+}
+
+.visual-format {
+  background-image: url("./assets/card-07.jpg");
+}
+
+.visual-brand {
+  background-image: url("./assets/card-08.jpg");
+}
+
+.visual-display {
+  background-image: url("./assets/card-09.jpg");
+}
+
+.visual-4k {
+  background-image: url("./assets/card-10.jpg");
+}
+
+.visual-script::before,
+.visual-script::after,
+.visual-camera::before,
+.visual-camera::after,
+.visual-map::before,
+.visual-map::after,
+.visual-people::before,
+.visual-people::after,
+.visual-film::before,
+.visual-film::after,
+.visual-audio::before,
+.visual-audio::after,
+.visual-format::before,
+.visual-format::after,
+.visual-brand::before,
+.visual-brand::after,
+.visual-display::before,
+.visual-display::after,
+.visual-4k::before,
+.visual-4k::after {
+  display: none;
 }
 
 .deliverable-card span {
@@ -1110,7 +1180,12 @@ h1 {
   }
 
   .case-copy,
+  .deliverables-section,
   .studio-section {
+    width: min(100%, 1120px);
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
     grid-template-columns: 1fr;
   }
 
