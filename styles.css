@@ -533,6 +533,7 @@ h1 {
 
 .compare-section {
   margin-top: clamp(92px, 11vw, 160px);
+  width: min(100%, 1200px);
 }
 
 .compare-panel {
@@ -543,11 +544,11 @@ h1 {
 }
 
 .compare-panel h2 {
-  max-width: 850px;
+  max-width: 980px;
   margin: 0 auto;
   text-align: center;
   text-transform: uppercase;
-  font-size: clamp(36px, 4vw, 58px);
+  font-size: clamp(36px, 3.7vw, 54px);
   line-height: 1.18;
   font-weight: 500;
 }
