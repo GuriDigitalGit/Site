@@ -25,6 +25,7 @@ body {
   margin: 0;
   min-height: 100vh;
   background: var(--paper);
+  overflow-x: hidden;
 }
 
 button,
@@ -93,10 +94,10 @@ a {
 .hero {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(260px, 32%) minmax(640px, 1fr);
+  grid-template-columns: minmax(330px, 350px) minmax(0, 1fr);
   align-items: start;
-  gap: clamp(24px, 2.8vw, 44px);
-  padding-top: clamp(118px, 12vw, 168px);
+  gap: clamp(20px, 1.7vw, 28px);
+  padding-top: clamp(110px, 8.5vw, 122px);
 }
 
 .hero-art {
@@ -108,35 +109,8 @@ a {
 
 .filmmaker-illustration {
   display: block;
-  width: min(100%, 430px);
-  margin-left: clamp(0px, 3vw, 54px);
-}
-
-.line {
-  fill: none;
-  stroke: var(--ink);
-  stroke-width: 8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.fill,
-.dot {
-  fill: var(--ink);
-}
-
-.knockout {
-  fill: var(--paper);
-}
-
-.play-bubble {
-  fill: var(--paper);
-  stroke: var(--ink);
-  stroke-width: 7;
-}
-
-.play-triangle {
-  fill: var(--ink);
+  width: min(100%, 370px);
+  margin-left: 0;
 }
 
 .hero-copy {
@@ -150,16 +124,20 @@ h1 {
   max-width: 930px;
   margin: 0 auto;
   text-align: center;
-  font-size: clamp(42px, 3.82vw, 58px);
-  line-height: 1.24;
+  font-size: clamp(42px, 3.48vw, 50px);
+  line-height: 1.22;
   letter-spacing: 0;
-  font-weight: 600;
+  font-weight: 500;
+}
+
+.title-line {
+  display: block;
 }
 
 .pink-scribble {
   position: absolute;
-  top: 48%;
-  right: min(10%, 96px);
+  top: 28%;
+  right: min(8%, 74px);
   width: min(37%, 260px);
   height: 62px;
   pointer-events: none;
@@ -181,11 +159,11 @@ h1 {
 }
 
 .subhead {
-  max-width: 860px;
-  margin: 24px auto 0;
+  max-width: 900px;
+  margin: 20px auto 0;
   text-align: center;
   color: var(--muted);
-  font-size: clamp(18px, 1.55vw, 24px);
+  font-size: clamp(18px, 1.38vw, 20px);
   line-height: 1.55;
   letter-spacing: 0;
 }
@@ -193,8 +171,9 @@ h1 {
 .video-card {
   position: relative;
   display: block;
-  width: min(100%, 900px);
-  aspect-ratio: 16 / 9.7;
+  width: calc(100% + clamp(22px, 4.1vw, 64px));
+  max-width: none;
+  aspect-ratio: 16 / 9;
   margin: 37px auto 0;
   overflow: hidden;
   border: 0;
@@ -479,8 +458,10 @@ h1 {
 
 .case-gallery {
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.2fr);
+  grid-template-columns: minmax(0, 622fr) minmax(0, 782fr);
   gap: 36px;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
   margin-top: clamp(70px, 8vw, 110px);
 }
 
@@ -1124,6 +1105,10 @@ h1 {
     order: 1;
   }
 
+  .video-card {
+    width: min(100%, 900px);
+  }
+
   .case-copy,
   .studio-section {
     grid-template-columns: 1fr;
@@ -1132,6 +1117,11 @@ h1 {
   .case-gallery,
   .deliverable-grid {
     grid-template-columns: 1fr;
+  }
+
+  .case-gallery {
+    width: 100%;
+    margin-left: 0;
   }
 
   .table-row {
@@ -1158,6 +1148,7 @@ h1 {
 
 @media (max-width: 760px) {
   .page-shell {
+    max-width: 100vw;
     padding: 18px 22px 36px;
   }
 
@@ -1175,22 +1166,34 @@ h1 {
 
   .hero {
     padding-top: 56px;
+    min-width: 0;
+  }
+
+  .hero-copy,
+  .subhead {
+    width: calc(100vw - 44px);
+    max-width: calc(100vw - 44px);
   }
 
   h1 {
     text-align: left;
-    font-size: clamp(34px, 10vw, 40px);
+    font-size: clamp(32px, 8.8vw, 36px);
     line-height: 1.12;
-    max-width: 100%;
+    max-width: min(100%, 360px);
     margin-inline: 0;
-    overflow-wrap: anywhere;
-    hyphens: auto;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+  }
+
+  .title-line {
+    display: inline;
   }
 
   .pink-scribble {
-    top: 31%;
-    right: -3%;
-    width: 54%;
+    top: 36%;
+    right: 0;
+    width: 46%;
     height: 44px;
   }
 
@@ -1202,6 +1205,7 @@ h1 {
   }
 
   .video-card {
+    width: calc(100vw - 44px);
     aspect-ratio: 1 / 0.88;
     margin-top: 28px;
     border-radius: 0 0 8px 8px;
@@ -1381,5 +1385,14 @@ h1 {
 
   .hero {
     padding-top: 48px;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-copy,
+  .subhead,
+  .video-card {
+    width: min(calc(100vw - 44px), 376px);
+    max-width: min(calc(100vw - 44px), 376px);
   }
 }
