@@ -479,7 +479,7 @@ h1 {
 
 .case-gallery {
   display: grid;
-  grid-template-columns: 1fr 1.28fr;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.2fr);
   gap: 36px;
   margin-top: clamp(70px, 8vw, 110px);
 }
@@ -489,11 +489,14 @@ h1 {
   position: relative;
   overflow: hidden;
   min-height: 280px;
+  display: block;
+  width: 100%;
+  margin: 0;
   background: #ddd;
+  object-fit: cover;
 }
 
-.still::before,
-.scene::before {
+.still::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -501,6 +504,26 @@ h1 {
     radial-gradient(circle at 28% 20%, rgba(255, 255, 255, 0.72), transparent 14%),
     linear-gradient(150deg, rgba(255, 255, 255, 0.15), transparent 42%);
   mix-blend-mode: screen;
+}
+
+.still img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.case-gallery .still {
+  aspect-ratio: 1.53 / 1;
+}
+
+.case-gallery .still:nth-child(2) {
+  aspect-ratio: 1.93 / 1;
+}
+
+.scene {
+  height: 100%;
+  min-height: 0;
 }
 
 .still span {
@@ -512,19 +535,6 @@ h1 {
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-}
-
-.still-water {
-  background:
-    radial-gradient(circle at 24% 12%, #f7d28a, transparent 18%),
-    linear-gradient(145deg, #19423b 0%, #315d51 38%, #87a992 38% 44%, #25453d 44% 100%);
-}
-
-.still-masterplan {
-  background:
-    radial-gradient(circle at 78% 11%, #ffe1a1, transparent 18%),
-    repeating-linear-gradient(28deg, transparent 0 32px, rgba(255, 255, 255, 0.4) 34px 38px),
-    linear-gradient(150deg, #7c9655 0%, #c0a96d 45%, #376643 100%);
 }
 
 .center-line {
@@ -860,46 +870,19 @@ h1 {
 
 .scene-grid {
   display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
-  grid-auto-rows: 260px;
+  grid-template-columns: minmax(0, 1.64fr) minmax(0, 1fr);
+  grid-template-rows: 258px 432px;
   gap: 16px;
-}
-
-.scene-tennis {
-  background:
-    radial-gradient(circle at 32% 25%, #eff060 0 45px, transparent 47px),
-    linear-gradient(130deg, #ffe4a4 0%, #c19b55 35%, #191a11 100%);
-}
-
-.scene-street {
-  background:
-    linear-gradient(90deg, transparent 45%, rgba(255, 255, 255, 0.7) 46% 49%, transparent 50%),
-    linear-gradient(145deg, #8a7a52, #dfb36d 45%, #445c38);
-}
-
-.scene-crowd {
-  background:
-    radial-gradient(circle at 30% 44%, #f0d0a7 0 30px, transparent 32px),
-    radial-gradient(circle at 50% 35%, #f5cda0 0 26px, transparent 28px),
-    radial-gradient(circle at 68% 43%, #efc095 0 30px, transparent 32px),
-    linear-gradient(155deg, #bf7b4b, #eed6a8 58%, #76543c);
 }
 
 .scene-sun {
   grid-column: 1;
-  grid-row: span 2;
-  background:
-    radial-gradient(circle at 48% 42%, #fff0a3 0 42px, #ef9f18 43px 64px, transparent 66px),
-    radial-gradient(circle at 60% 38%, rgba(255, 221, 96, 0.8), transparent 32%),
-    linear-gradient(135deg, #101b12, #815514 55%, #201409);
+  grid-row: 2;
 }
 
 .scene-aerial {
-  grid-row: span 2;
-  background:
-    repeating-linear-gradient(30deg, transparent 0 46px, rgba(255, 255, 255, 0.38) 48px 54px),
-    radial-gradient(circle at 82% 10%, #fff2a8, transparent 18%),
-    linear-gradient(145deg, #d5b36a, #53723c 48%, #26381f);
+  grid-column: 2;
+  grid-row: 2;
 }
 
 .friction-grid {
@@ -956,22 +939,7 @@ h1 {
 
 .still-family {
   grid-column: 1 / -1;
-  background:
-    radial-gradient(circle at 27% 56%, #e9c098 0 30px, transparent 32px),
-    radial-gradient(circle at 50% 52%, #f0c69a 0 26px, transparent 28px),
-    linear-gradient(145deg, #f4cd8a, #88a850 55%, #5e6f35);
-}
-
-.still-pool {
-  background:
-    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0 4px, transparent 4px 18px),
-    linear-gradient(135deg, #40b7ca, #77d6e6);
-}
-
-.still-tennis {
-  background:
-    linear-gradient(90deg, transparent 48%, rgba(255, 255, 255, 0.7) 49% 51%, transparent 52%),
-    linear-gradient(145deg, #647f60, #caa46b);
+  min-height: 313px;
 }
 
 .method-section h2 {
@@ -1346,6 +1314,7 @@ h1 {
 
   .scene-grid {
     grid-template-columns: 1fr;
+    grid-template-rows: none;
     grid-auto-rows: 220px;
   }
 
