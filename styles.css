@@ -108,6 +108,12 @@ a {
   padding-top: clamp(124px, 9vw, 132px);
 }
 
+@media (min-width: 1081px) {
+  .hero {
+    transform: translateX(clamp(-56px, -3vw, -40px));
+  }
+}
+
 .hero-art {
   position: relative;
   z-index: 1;
