@@ -108,12 +108,6 @@ a {
   padding-top: clamp(124px, 9vw, 132px);
 }
 
-@media (min-width: 1081px) {
-  .hero {
-    transform: translateX(clamp(-56px, -3vw, -40px));
-  }
-}
-
 .hero-art {
   position: relative;
   z-index: 1;
@@ -202,6 +196,34 @@ h1 {
   cursor: pointer;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
   transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+@media (min-width: 1081px) {
+  .hero {
+    display: block;
+  }
+
+  .hero-art {
+    position: absolute;
+    top: clamp(146px, 10vw, 168px);
+    left: clamp(-96px, calc(50% - 760px), -64px);
+    z-index: 1;
+    margin: 0;
+    transform: translate3d(0, calc(var(--hero-parallax, 0) * -18px), 0);
+  }
+
+  .filmmaker-illustration {
+    width: 320px;
+  }
+
+  .hero-copy {
+    width: min(100%, 1000px);
+    margin-inline: auto;
+  }
+
+  .video-card {
+    width: 100%;
+  }
 }
 
 .video-card::before {
