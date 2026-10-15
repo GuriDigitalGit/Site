@@ -18,11 +18,15 @@ export default function HomePage() {
         <p>Projetos, lançamentos e sistemas de marca dirigidos pela Guri.</p>
         <div>
           {cases.slice(0, 3).map((item) => (
-            <article key={item.slug}>
-              <p>{item.year} · {item.client}</p>
-              <h3><Link href={`/cases/${item.slug}`}>{item.title}</Link></h3>
-              <p>{item.excerpt}</p>
-            </article>
+            <Link className="case-card" key={item.slug} href={`/cases/${item.slug}`}>
+              <img src={item.coverImage} alt="" />
+              <div className="case-card-body">
+                <p>{item.year} · {item.client}</p>
+                <h3>{item.title}</h3>
+                <p>{item.excerpt}</p>
+                <span>Ver case →</span>
+              </div>
+            </Link>
           ))}
         </div>
         <Link href="/cases">Ver todos os cases →</Link>

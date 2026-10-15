@@ -10,11 +10,15 @@ export default function CasesPage() {
       <p>Projetos em que estratégia, identidade e direção criativa viram presença de marca.</p>
       <div>
         {cases.map((item) => (
-          <article key={item.slug}>
-            <p>{item.year} · {item.category}</p>
-            <h2><Link href={`/cases/${item.slug}`}>{item.title}</Link></h2>
-            <p>{item.excerpt}</p>
-          </article>
+          <Link className="case-card" key={item.slug} href={`/cases/${item.slug}`}>
+            <img src={item.coverImage} alt="" />
+            <div className="case-card-body">
+              <p>{item.year} · {item.category}</p>
+              <h2>{item.title}</h2>
+              <p>{item.excerpt}</p>
+              <span>Ver case →</span>
+            </div>
+          </Link>
         ))}
       </div>
     </SiteShell>
