@@ -6,6 +6,8 @@ export default function SiteShell({ children }) {
       <header className="platform-header">
         <Link className="platform-brand" href="/">GURIDIGITAL</Link>
         <nav className="platform-nav" aria-label="Navegação principal">
+          <Link href="/">Home</Link>
+          <Link href="/cases">Cases</Link>
           <Link href="/sobre">Sobre</Link>
           <Link href="/servicos">Serviços</Link>
           <Link href="/blog">Blog</Link>
