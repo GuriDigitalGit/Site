@@ -1,13 +1,36 @@
 # GuriDigital Site
 
-Landing page estática pronta para deploy na Vercel.
+Site GuriDigital em migração incremental de uma landing estática para Next.js na Vercel.
+
+## Estrutura atual
+
+- `/` preserva a landing visual existente enquanto a migração é validada.
+- `/sobre`, `/servicos` e `/contato` são as primeiras rotas da plataforma.
+- `/blog` e `/blog/[slug]` usam fixtures locais temporárias, preparadas para receber conteúdo do Sanity.
+- `app/site-shell.js` concentra o header, a navegação e o footer das novas páginas.
+- `public/assets` reúne os assets servidos pelo Next.js.
+
+## Desenvolvimento
+
+```bash
+npm install
+npm run dev
+```
+
+Abra `http://localhost:3000`.
+
+## Build
+
+```bash
+npm run build
+```
 
 ## Deploy
 
 1. Importe este repositório na Vercel.
-2. Use as configurações padrão de projeto estático.
-3. O arquivo `index.html` fica na raiz do projeto, então não precisa de build command.
+2. Deixe a Vercel detectar Next.js automaticamente.
+3. Use os scripts `npm run build` e `npm run start` padrão do projeto.
 
-## WordPress depois
+## Conteúdo depois
 
-A mesma estrutura pode virar shortcode/snippet no WordPress: o HTML entra no retorno do shortcode, o CSS é enfileirado ou injetado escopado, e o JavaScript fica em um bloco pequeno para o modal do player.
+O blog está preparado com conteúdo local temporário. A próxima etapa de plataforma é conectar o Sanity para gerenciar posts, categorias, autores, imagens e slugs sem alterar os componentes visuais.

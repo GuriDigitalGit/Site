@@ -1,0 +1,79 @@
+@import '../styles.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.platform-shell {
+  min-height: 100vh;
+}
+
+.platform-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px clamp(22px, 5vw, 80px);
+  background: #f7f7f5;
+}
+
+.platform-header a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.platform-brand {
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.platform-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 14px;
+}
+
+.platform-main {
+  width: min(100% - 44px, 1180px);
+  margin: 0 auto;
+  padding: 96px 0 140px;
+}
+
+.platform-main h1 {
+  max-width: 760px;
+  margin: 0 0 24px;
+  font-size: clamp(44px, 8vw, 92px);
+  line-height: 0.95;
+  letter-spacing: -0.07em;
+}
+
+.platform-main p {
+  max-width: 680px;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.platform-footer {
+  padding: 28px 22px;
+  border-top: 1px solid #d9d9d2;
+  color: #555;
+  font-size: 14px;
+}
+
+@media (max-width: 640px) {
+  .platform-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .platform-main {
+    padding-top: 64px;
+  }
+}
