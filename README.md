@@ -36,3 +36,5 @@ npm run build
 ## Conteúdo depois
 
 O blog está preparado com conteúdo local temporário. A próxima etapa de plataforma é conectar o Sanity para gerenciar posts, categorias, autores, imagens e slugs sem alterar os componentes visuais.
+
+Os schemas iniciais ficam em `sanity/schemaTypes`: `post` e `case`. Eles são a base do painel editorial futuro e ainda não dependem de credenciais.
