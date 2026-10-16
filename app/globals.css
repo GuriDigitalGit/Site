@@ -11,6 +11,14 @@ body {
 }
 
 .home-page { background: #fff; color: #0d0d0d; overflow: hidden; }
+.motion-ready .home-manifesto, .motion-ready .home-services, .motion-ready .home-works, .motion-ready .home-ethos, .motion-ready .home-process, .motion-ready .home-contact, .motion-ready .home-team { opacity: 0; transform: translateY(28px); transition: opacity 700ms ease, transform 700ms cubic-bezier(.22, 1, .36, 1); }
+.motion-ready .home-manifesto.is-visible, .motion-ready .home-services.is-visible, .motion-ready .home-works.is-visible, .motion-ready .home-ethos.is-visible, .motion-ready .home-process.is-visible, .motion-ready .home-contact.is-visible, .motion-ready .home-team.is-visible { opacity: 1; transform: translateY(0); }
+.home-header nav a, .home-header-cta, .home-button, .home-more-link, .home-footer a { transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, transform 180ms ease, opacity 180ms ease; }
+.home-header nav a:hover, .home-footer a:hover { color: #c84b2f; }
+.home-header-cta:hover, .home-button-dark:hover { transform: translateY(-3px); background: #c84b2f; }
+.home-button-outline:hover { transform: translateY(-3px); border-color: #c84b2f; color: #c84b2f; }
+.service-card { transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease; }.service-card:hover { transform: translateY(-8px); border-color: #c84b2f; box-shadow: 0 22px 46px rgb(13 13 13 / 10%); }.service-card:hover .service-art img { transform: scale(1.05) rotate(-2deg); }.service-art img { transition: transform 500ms cubic-bezier(.22, 1, .36, 1); }
+.team-photo { transition: transform 300ms ease, box-shadow 300ms ease; }.team-grid article:hover .team-photo { transform: translateY(-6px); box-shadow: 0 18px 36px rgb(13 13 13 / 12%); }.team-grid article { transition: transform 250ms ease; }.team-grid article:hover { transform: translateY(-3px); }
 .home-page a { color: inherit; text-decoration: none; }
 .home-header { height: 93px; padding: 24px 64px; border-bottom: 1px solid #e8e8e8; display: flex; align-items: center; justify-content: space-between; gap: 30px; font-size: 15px; }
 .home-logo { display: inline-flex; align-items: flex-start; font-size: 25px; font-weight: 800; letter-spacing: -.08em; }.home-logo img { display: block; width: 160px; height: auto; max-height: 36px; object-fit: contain; object-position: left center; }
@@ -233,4 +241,9 @@ body {
     grid-template-columns: 1fr;
     gap: 8px;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-ready .home-manifesto, .motion-ready .home-services, .motion-ready .home-works, .motion-ready .home-ethos, .motion-ready .home-process, .motion-ready .home-contact, .motion-ready .home-team { opacity: 1; transform: none; transition: none; }
+  .home-page *, .home-page *::before, .home-page *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }

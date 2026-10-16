@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { cases } from '../lib/cases';
+import HomeMotion from './home-motion';
 
 const services = [
   ['01', 'Estratégia de marca', 'Posicionamento, território e direção para marcas que querem ser lembradas.'],
@@ -22,7 +23,7 @@ function HomeHeader() {
 }
 
 export default function HomePage() {
-  return <div className="home-page" id="inicio">
+  return <div className="home-page" id="inicio"><HomeMotion />
     <HomeHeader />
     <main>
       <section className="home-hero"><img className="hero-figma-art" src="/figma-home/hero-art.svg" alt="" aria-hidden="true" /><div className="home-hero-inner"><h1>Marcas que ninguém esquece.</h1><p className="home-hero-lead">Do conceito à forma. Do nome à alma. Construímos marcas com identidade genuína e presença inesquecível.</p><div className="home-actions"><Link className="home-button home-button-dark" href="/contato">Descobrir seu novo mecanismo de marca <span>→</span></Link><a className="home-button home-button-outline" href="#trabalhos">Ver trabalhos</a></div></div><div className="home-proof"><p><span />+80 marcas construídas — desde 2022</p><div className="home-client-logos"><b>CAMADA</b><b>Pagfy</b><b>verve</b><b>ORIGEM</b><b>novva</b><b>mira</b></div></div></section>
