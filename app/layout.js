@@ -1,8 +1,8 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'GuriDigital | Cine Sintético',
-  description: 'Filmes, manifestos e documentários de lançamento criados com IA cinematográfica pela GuriDigital.',
+  title: 'Guri Digital | Branding & criação de marcas',
+  description: 'Agência de branding e criação de marcas. Do conceito à forma. Do nome à alma.',
 };
 
 export default function RootLayout({ children }) {

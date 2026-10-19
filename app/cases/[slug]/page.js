@@ -1,36 +1,26 @@
-import { notFound } from 'next/navigation';
-import SiteShell from '../../site-shell';
+import Link from 'next/link';
 import { cases, getCaseBySlug } from '../../../lib/cases';
+import { notFound } from 'next/navigation';
 
-export function generateStaticParams() {
-  return cases.map((item) => ({ slug: item.slug }));
+export function generateStaticParams() { return cases.map((item) => ({ slug: item.slug })); }
+
+function CaseHeader() {
+  return <header className="case-header"><Link className="case-logo" href="/"><img src="/site-home/live-logo.svg" alt="Guri Digital" /></Link><button className="home-menu" aria-label="Abrir menu"><span /><span /><span /></button><nav><a href="/#inicio">Início</a><a href="/#manifesto">Manifesto</a><a href="/#servicos">Serviços</a><a href="/#trabalhos">Trabalhos</a><a href="/#sobre">Sobre</a></nav><Link className="home-header-cta" href="/contato">Falar com a Guri <span>→</span></Link></header>;
 }
 
 export default async function CasePage({ params }) {
   const { slug } = await params;
   const item = getCaseBySlug(slug);
-
   if (!item) notFound();
-
-  return (
-    <SiteShell>
-      <article className="case-detail">
-        <p>{item.year} · {item.category}</p>
-        <h1>{item.title}</h1>
-        <p>{item.excerpt}</p>
-        <img className="case-detail-hero" src={item.heroImage} alt="" />
-        <div className="case-detail-copy">
-        <h2>Desafio</h2>
-        <p>{item.challenge}</p>
-        <h2>Solução</h2>
-        <p>{item.solution}</p>
-        <h2>Resultado</h2>
-        <p>{item.results}</p>
-        </div>
-        <div className="case-gallery" aria-label={`Imagens do case ${item.title}`}>
-          {item.gallery.map((image) => <img key={image} src={image} alt="" />)}
-        </div>
-      </article>
-    </SiteShell>
-  );
+  const intro = item.caseIntro || 'Uma marca construída para ser reconhecida.';
+  const description = item.caseDescription || item.excerpt;
+  return <div className="case-page"><CaseHeader /><main>
+    <section className="case-hero"><Link className="case-back" href="/#trabalhos">← Voltar</Link><img src={item.heroImage} alt="" /><div className="case-meta"><div><strong>{item.client}</strong><span>CLIENTE</span></div><div><strong>{item.category}</strong><span>SERVIÇO</span></div><div><strong>{item.year}</strong><span>ANO</span></div><div><strong>{item.sector || 'Branding'}</strong><span>SETOR</span></div></div></section>
+    <section className="case-intro"><Eyebrow> SOBRE O PROJETO</Eyebrow><h1>{intro}</h1><p>{description}</p></section>
+    <section className="case-gallery">{item.gallery.map((image) => <img src={image} alt="" key={image} />)}</section>
+    <section className="case-more"><Eyebrow>MAIS TRABALHOS</Eyebrow><h2>Explore outros projetos.</h2><Link className="home-button home-button-outline" href="/#trabalhos">Ver todos os trabalhos <span>→</span></Link></section>
+    <section className="home-contact case-contact"><div className="contact-art"><img src="/figma-home/contact-art.svg" alt="" /></div><div className="contact-copy"><Eyebrow>CONTATO</Eyebrow><h2>Pronto para construir algo real?</h2><p>Conta pra gente o que você está construindo. A gente te diz como a marca pode levar isso mais longe.</p><Link className="home-button home-button-dark" href="/contato">Falar com a Guri <span>→</span></Link></div></section>
+  </main><footer className="home-footer"><div className="footer-brand"><Link className="home-logo" href="/"><img src="/figma-home/footer-logo.svg" alt="Guri Digital" /></Link><p>Agência de branding & criação de marca.<br />Do conceito à forma.<br />Do nome à alma.</p></div><div><Eyebrow light>NAVEGAÇÃO</Eyebrow><nav><a href="/#inicio">Início</a><a href="/#manifesto">Manifesto</a><a href="/#servicos">Serviços</a><a href="/#trabalhos">Trabalhos</a><a href="/#sobre">Sobre</a></nav></div><div><Eyebrow light>CONTATO</Eyebrow><a href="mailto:comercial1@guridigital.com.br">comercial1@guridigital.com.br</a><a href="tel:+5511955795397">+55 11 95579 5397</a><span>São Paulo, Brasil</span></div><div><Eyebrow light>REDES</Eyebrow><a href="https://instagram.com/guriwork" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://behance.net/guridigital" target="_blank" rel="noreferrer">Behance ↗</a></div><div className="footer-word">GURI DIGITAL</div><div className="footer-bottom">© 2026 GURI Digital. Todos os direitos reservados.<span>Voltar ao topo ↑</span></div></footer></div>;
 }
+
+function Eyebrow({ children, light = false }) { return <p className={`home-eyebrow${light ? ' home-eyebrow-light' : ''}`}><span />{children}</p>; }
