@@ -247,3 +247,36 @@ body {
   .motion-ready .home-manifesto, .motion-ready .home-services, .motion-ready .home-works, .motion-ready .home-ethos, .motion-ready .home-process, .motion-ready .home-contact, .motion-ready .home-team { opacity: 1; transform: none; transition: none; }
   .home-page *, .home-page *::before, .home-page *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
+
+/* Live Home reference: guridigital.com.br */
+.home-menu { display: flex; flex-direction: column; gap: 5px; border: 0; background: none; padding: 0; }
+.live-hero { position: relative; overflow: hidden; }
+.live-rocket, .live-scribble, .live-telescope { position: absolute; z-index: 0; pointer-events: none; }
+.live-rocket { left: 3%; top: 55px; width: 260px; height: 290px; object-fit: contain; }
+.live-scribble { left: 14%; top: 310px; width: 410px; height: 90px; object-fit: contain; }
+.live-telescope { right: 3%; bottom: 50px; width: 300px; height: 270px; object-fit: contain; }
+.live-hero .home-hero-inner, .live-hero .home-proof { z-index: 1; }
+.live-hero .home-proof > p { color: #0d0d0d; }
+.live-service-grid { grid-template-columns: repeat(2, 1fr); gap: 0; }
+.live-service-card { min-height: 300px; padding: 44px 42px; border-width: 1px 0 0; border-radius: 0; background: #fff; display: grid; grid-template-columns: 78px 1fr; gap: 28px; }
+.live-service-card:nth-child(odd) { border-right: 1px solid #e8e8e8; }
+.live-service-card > b { color: #c84b2f; font-size: 18px; font-weight: 500; }
+.live-service-card h3 { margin: 0 0 16px; font-size: 32px; }
+.live-service-card p { max-width: 480px; margin: 0; color: #6f6d69; line-height: 1.6; }
+.live-works-grid { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 390px; }
+.live-works-grid .work-card:first-child { grid-row: auto; }
+.live-works-grid .work-card-overlay { padding: 26px; }
+.live-works-grid .work-card-overlay h3 { margin: 0 0 8px; font-size: 24px; }
+.live-works-grid .work-card-overlay p { margin: 0; font-size: 13px; }
+.works-heading select { min-width: 220px; padding: 14px 18px; border: 1px solid #ddd; border-radius: 999px; background: #fff; color: #3a3939; font: inherit; }
+.home-testimonials { overflow: hidden; padding: 72px 0; background: #fff; }
+.testimonial-track { display: flex; width: max-content; gap: 24px; animation: testimonial-scroll 36s linear infinite; }
+.home-testimonials article { width: 250px; padding: 24px; border: 1px solid #e8e8e8; border-radius: 16px; background: #fafafa; }
+.testimonial-avatar { height: 160px; margin: -24px -24px 20px; border-radius: 16px 16px 0 0; background: linear-gradient(145deg, #d9d5d0, #77716c); }
+.home-testimonials h3 { margin: 0 0 6px; font-size: 18px; }.home-testimonials p { margin: 0; color: #7a7670; font-size: 14px; }
+@keyframes testimonial-scroll { to { transform: translateX(calc(-50% - 12px)); } }
+.home-footer { grid-template-columns: 2fr 1fr 1.4fr 1fr; }.home-footer > div:nth-child(3), .home-footer > div:nth-child(4) { display: flex; flex-direction: column; gap: 14px; }.home-footer > div:nth-child(3) .home-eyebrow, .home-footer > div:nth-child(4) .home-eyebrow { margin-bottom: 10px; }
+
+@media (max-width: 760px) {
+  .home-header { position: relative; }.home-menu span { display: block; width: 34px; height: 5px; border-radius: 3px; background: #0d0d0d; }.home-header nav { display: none; }.live-rocket { left: -25px; top: 80px; width: 170px; }.live-scribble { left: 15%; top: 295px; width: 260px; }.live-telescope { right: -30px; bottom: 90px; width: 190px; }.live-hero { padding-top: 210px; }.live-service-grid, .live-works-grid { grid-template-columns: 1fr; }.live-service-card { border-right: 0; }.live-works-grid { grid-auto-rows: 290px; }.works-heading select { margin-top: 24px; width: 100%; }.home-footer { grid-template-columns: 1fr; }.testimonial-track { animation-duration: 28s; }
+}
