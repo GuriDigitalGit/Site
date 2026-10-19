@@ -447,3 +447,90 @@ body {
   .contact-art-main, .contact-art-top, .contact-art-bottom { animation: none; }
   .manifesto-title p:first-child { background: none; color: #fff; -webkit-text-fill-color: #fff; }
 }
+
+/* Final pass: one continuous manifesto, overflowing team row, and live footer geometry. */
+.manifesto-scroll-space { height: 240vh; }
+.manifesto-title p.manifesto-message { color: transparent; background: none; -webkit-text-fill-color: initial; animation: none; }
+.manifesto-title .manifesto-message-first,
+.manifesto-title .manifesto-message-final { color: transparent; background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.manifesto-title .manifesto-message-first {
+  background: linear-gradient(90deg, #fff 0%, #fff var(--manifesto-first-fill, 0%), #626262 var(--manifesto-first-fill, 0%), #626262 100%);
+}
+.manifesto-title .manifesto-message-final {
+  background: linear-gradient(90deg, #fff 0%, #fff var(--manifesto-final-fill, 0%), #626262 var(--manifesto-final-fill, 0%), #626262 100%);
+  opacity: var(--manifesto-final-opacity, .28);
+}
+.manifesto-title {
+  transform-origin: 50% 50%;
+  opacity: var(--manifesto-title-opacity, 1);
+  transform: scale(var(--manifesto-title-scale, 1));
+}
+
+.team-carousel-viewport { margin-top: 64px; overflow: visible; }
+.team-grid { --team-card-width: calc((min(1060px, calc(100vw - 128px)) - 30px) / 4); width: max-content; max-width: none; overflow: visible; transform: none; animation: none; transition: none; }
+.team-grid article { flex: 0 0 var(--team-card-width); overflow: visible; }
+.team-photo { overflow: hidden; }
+
+.home-footer { overflow: hidden; padding: 52px 0 64px; }
+.home-footer .footer-top { width: min(954px, calc(100vw - 128px)); margin: 0 auto 56px; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; }
+.home-footer .footer-top > div { min-width: 0; }
+.home-footer .footer-top > div:nth-child(1) { flex: 0 1 283px; }
+.home-footer .footer-top > div:nth-child(2) { flex: 0 0 72px; }
+.home-footer .footer-top > div:nth-child(3) { flex: 0 0 162px; }
+.home-footer .footer-top > div:nth-child(4) { flex: 0 0 86px; }
+.home-footer .footer-top nav,
+.home-footer .footer-top > div:nth-child(3),
+.home-footer .footer-top > div:nth-child(4) { gap: 10px; }
+.footer-word { box-sizing: border-box; width: min(1060px, calc(100vw - 128px)); height: 104.265625px; margin: 0 auto; padding: 0; border-top: 1px solid #333; overflow: hidden; }
+.footer-word img { display: block; width: 100%; height: auto; margin: 0; }
+.home-footer .footer-bottom { box-sizing: border-box; width: min(954px, calc(100vw - 128px)); min-height: 85.40625px; margin: 0 auto; padding: 28px; border-top: 0; display: flex !important; flex-direction: row; align-items: center; justify-content: space-between; gap: 30px; }
+.home-footer .footer-bottom > span,
+.home-footer .footer-bottom > a { display: block; flex: 0 0 auto; margin: 0; white-space: nowrap; }
+.home-footer .footer-bottom > a { color: #777; }
+.home-footer > div.footer-bottom { flex-direction: row !important; }
+.home-footer > div.footer-bottom > a { font-size: 13px; }
+
+@media (max-width: 760px) {
+  .team-carousel-viewport { margin-top: 48px; }
+  .home-footer { padding: 52px 22px 44px; }
+  .home-footer .footer-top { width: 100%; margin: 0; display: grid; gap: 42px; }
+  .home-footer .footer-top > div:nth-child(n) { flex: none; }
+  .footer-word { width: calc(100% + 44px); height: 76px; margin: 56px -22px 0; }
+  .home-footer .footer-bottom { width: 100%; min-height: 0; margin: 0; padding: 24px 0 0; display: block !important; }
+  .home-footer .footer-bottom > a { margin-top: 14px; }
+}
+
+/* CSS timeline fallback keeps the focal sequence working if the client script is delayed. */
+@property --manifesto-first-fill { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+@property --manifesto-final-fill { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+.manifesto-title .manifesto-message-first {
+  animation: manifesto-first-fill 1ms linear both;
+  animation-timeline: --manifesto-reveal;
+  animation-range: cover 0% cover 60%;
+}
+.manifesto-title .manifesto-message-final {
+  animation: manifesto-final-fill 1ms linear both;
+  animation-timeline: --manifesto-reveal;
+  animation-range: cover 45% cover 70%;
+}
+.manifesto-title {
+  animation: manifesto-title-exit 1ms linear both;
+  animation-timeline: --manifesto-reveal;
+  animation-range: cover 60% cover 70%;
+}
+@keyframes manifesto-first-fill { from { --manifesto-first-fill: 0%; } to { --manifesto-first-fill: 100%; } }
+@keyframes manifesto-final-fill {
+  0% { --manifesto-final-fill: 0%; opacity: 0; }
+  22% { --manifesto-final-fill: 20%; opacity: .34; }
+  100% { --manifesto-final-fill: 100%; opacity: 1; }
+}
+@keyframes manifesto-title-exit { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(1.18); } }
+.manifesto-js .manifesto-title,
+.manifesto-js .manifesto-title .manifesto-message-first,
+.manifesto-js .manifesto-title .manifesto-message-final { animation: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .manifesto-title { animation: none; transform: none; opacity: 1; }
+  .manifesto-title .manifesto-message-first,
+  .manifesto-title .manifesto-message-final { animation: none; background: none; color: #fff; -webkit-text-fill-color: #fff; opacity: 1; }
+}
