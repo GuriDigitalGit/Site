@@ -9,7 +9,12 @@ export default function Manifesto() {
 
   useEffect(() => {
     const el = ref.current;
-    if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+    if (!el) return undefined;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.style.setProperty('--e', 1);
+      el.style.setProperty('--e2', 1);
+      return undefined;
+    }
     let frame = 0;
     const update = () => {
       frame = 0;
@@ -17,6 +22,13 @@ export default function Manifesto() {
       const vh = window.innerHeight;
       const p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
       el.style.setProperty('--p', p.toFixed(4));
+      // Entrada: avança de 0 a 1 enquanto o bloco sobe pela tela (e depois o texto, separado).
+      const e = Math.min(1, Math.max(0, (vh * 0.95 - r.top) / (vh * 0.7)));
+      const row = el.querySelector('.hx-manifesto-row');
+      const rt = row ? row.getBoundingClientRect().top : r.bottom;
+      const e2 = Math.min(1, Math.max(0, (vh * 0.98 - rt) / (vh * 0.42)));
+      el.style.setProperty('--e', e.toFixed(4));
+      el.style.setProperty('--e2', e2.toFixed(4));
     };
     const onScroll = () => { if (!frame) frame = requestAnimationFrame(update); };
     update();
